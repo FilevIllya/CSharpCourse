@@ -8,7 +8,7 @@ namespace CSharpCourse
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Test github pull");
         }
         static void DateTimeDemo()
         {
