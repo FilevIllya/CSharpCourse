@@ -8,7 +8,69 @@ namespace CSharpCourse
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Test github pull");
+            Console.Write("Enter your name:");
+            string name = Console.ReadLine();
+            Console.Write("Enter your surname:");
+            string surname = Console.ReadLine();
+            Console.Write("Enter your age:");
+            string age = Console.ReadLine();
+            Console.Write("Enter your weight in kg:");
+            double weight = Double.Parse(Console.ReadLine());
+            Console.Write("Enter your height in meters:");
+            double height = Double.Parse(Console.ReadLine());
+
+            double BMI = weight / (height * height);
+
+            string weightStr = weight.ToString();
+            string heightStr = height.ToString();
+            string BMIStr = BMI.ToString();
+            Console.Clear();
+
+            string yourProfile = $"Your profile:\nFull Name: {surname},{name}\nAge: {age}\nWeight: {weightStr}\nHeight: {heightStr}\nBody Mass Index: {BMIStr}";
+            Console.WriteLine(yourProfile);
+        }
+        
+        static void HeronsFormula()
+        {
+            Console.WriteLine("Enter 3 sides of triangle.");
+            Console.Write("Side 1 is:");
+            double side1 = double.Parse(Console.ReadLine());
+            Console.Write("Side 2 is:");
+            double side2 = double.Parse(Console.ReadLine());
+            Console.Write("Side 3 is:");
+            double side3 = double.Parse(Console.ReadLine());
+            double p = (side1 + side2 + side3) / 2;
+            double S = Math.Sqrt(p * ((p - side1) * (p - side2) * (p - side3)));
+            Console.WriteLine($"Area of the triangle: {S}");
+        }
+        static void HomeTask1()
+        {
+            //Task1
+            Console.WriteLine("What is your name?");
+            string name = Console.ReadLine();
+            Console.WriteLine($"Hello, {name}");
+            Console.WriteLine("Tap Enter for continue");
+            Console.ReadLine();
+            Console.Clear();
+            //Task2
+            Console.Write("Enter two numbers.\nNumber one: ");
+            int n1 = int.Parse(Console.ReadLine());
+            Console.Write("Number two: ");
+            int n2 = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine($"First number is {n1}, second number is {n2}");
+            int box = n1;
+            n1 = n2;
+            n2 = box;
+            Console.WriteLine($"After swap first number is {n1}, second number is {n2}");
+            Console.WriteLine("Tap Enter for continue");
+            Console.ReadLine();
+            Console.Clear();
+            //Task3
+            Console.Write("Enter integer:");
+            string integer = Console.ReadLine();
+            int numberOf = integer.Length;
+            Console.WriteLine($"Number of digits is: {numberOf}");
         }
         static void DateTimeDemo()
         {
