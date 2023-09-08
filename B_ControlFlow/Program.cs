@@ -6,6 +6,23 @@ namespace B_ControlFlow
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter two numbers");
+            Console.Write("Number 1: ");
+            double num1 = Double.Parse(Console.ReadLine());
+            Console.Write("Number 2: ");
+            double num2 = Double.Parse(Console.ReadLine());
+            if (num1 > num2)
+            {
+                Console.WriteLine($"Number {num1} is bigger then {num2}");
+            }
+            else
+            {
+                Console.WriteLine($"Number {num2} is bigger then {num1}");
+            }
+        }
+
+        static void IfElse()
+        {
             Console.Write("Enter your age: ");
             double age = Double.Parse(Console.ReadLine());
             Console.Write("Enter your weight in kg: ");
@@ -38,7 +55,7 @@ namespace B_ControlFlow
             {
                 Console.WriteLine("Not enough weight");
             }
-            else if(isNormal)
+            else if (isNormal)
             {
                 Console.WriteLine("You're OK");
             }
