@@ -8,6 +8,12 @@ namespace CSharpCourse
     {
         static void Main(string[] args)
         {
+
+        }
+
+        static void HomeTask3()
+        {
+            //Home task 3
             Console.Write("Enter your name:");
             string name = Console.ReadLine();
             Console.Write("Enter your surname:");
@@ -29,9 +35,9 @@ namespace CSharpCourse
             string yourProfile = $"Your profile:\nFull Name: {surname},{name}\nAge: {age}\nWeight: {weightStr}\nHeight: {heightStr}\nBody Mass Index: {BMIStr}";
             Console.WriteLine(yourProfile);
         }
-        
-        static void HeronsFormula()
+        static void HomeTask2()
         {
+            //Home task 2
             Console.WriteLine("Enter 3 sides of triangle.");
             Console.Write("Side 1 is:");
             double side1 = double.Parse(Console.ReadLine());
