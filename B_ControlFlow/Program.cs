@@ -6,6 +6,98 @@ namespace B_ControlFlow
     {
         static void Main(string[] args)
         {
+           
+        }
+
+        static void Debaging()
+        {
+            Console.WriteLine("Enter 3 sides of triangle.");
+
+            Console.Write("Side 1 is:");
+            double side1 = GetDouble();
+            Console.Write("Side 2 is:");
+            double side2 = GetDouble();
+            Console.Write("Side 3 is:");
+            double side3 = GetDouble();
+
+            double p = side1 + side2 + side3 / 2;
+
+            double S = Math.Sqrt(p * ((p - side1) * (p - side2) * (p - side3)));
+
+            Console.WriteLine($"Area of the triangle: {S}");
+        }
+        static double GetDouble()
+        {
+            return double.Parse(Console.ReadLine());
+        }
+        static void SwitchDemo()
+        {
+            int month = int.Parse(Console.ReadLine());
+
+            string season = string.Empty;
+            switch (month)
+            {
+                case 1:
+                case 2:
+                case 12:
+                    season = "Winter";
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    season = "Spring";
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    season = "Summer";
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                    season = "Autumn";
+                    break;
+                default:
+                    throw new ArgumentException("Unexpected number of month");
+            }
+
+            Console.WriteLine(season);
+
+            Console.ReadLine();
+
+            int weddingYears = int.Parse(Console.ReadLine());
+
+            string name = string.Empty;
+
+            switch (weddingYears)
+            {
+                case 5:
+                    name = "Деревянная свадьба";
+                    break;
+                case 10:
+                    name = "Оловяная свадьба";
+                    break;
+                case 15:
+                    name = "Хрустальная свадьба";
+                    break;
+                case 20:
+                    name = "Фарфоровая свадьба";
+                    break;
+                case 25:
+                    name = "Серебряная свадьба";
+                    break;
+                case 30:
+                    name = "Жемчужная свадьба";
+                    break;
+                default:
+                    name = "Не знаєм такого юбилея";
+                    break;
+            }
+
+            Console.WriteLine(name);
+        }
+        static void BreakContinue()
+        {
             int[] numberis = { 0, 3, 2, 1, 5, 4, 6, 7, 8, 9 };
 
             foreach (int n in numberis)
@@ -22,7 +114,7 @@ namespace B_ControlFlow
 
             Console.ReadLine();
 
-            char[] letters = {'a','b','c','d','e','f','g','h','i','j'};
+            char[] letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
 
             for (int i = 0; i < numberis.Length; i++)
             {
@@ -56,14 +148,13 @@ namespace B_ControlFlow
                     if (atI + atJ == 0)
                     {
                         Console.WriteLine($"Pair ({atI};{atJ}). Indexes ({i};{j})");
-                        counter++; 
+                        counter++;
                     }
-                    if (counter==3)
+                    if (counter == 3)
                         break;
                 }
             }
         }
-
         static void WhileDoWhile()
         {
             int age = 30;
