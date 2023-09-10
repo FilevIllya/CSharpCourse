@@ -6,9 +6,71 @@ namespace B_ControlFlow
     {
         static void Main(string[] args)
         {
-           
+
         }
 
+        static void AvarageBy3()
+        {
+            //HomeTask 2
+            int number = 0;
+            int[] numbers = new int[10];
+            int i = 0;
+            Console.WriteLine("Enter one by one positive numbers. Enter 0 to finish. Max 10 numbers");
+            do
+            {
+                number = int.Parse(Console.ReadLine());
+                if (number == 0)
+                    break;
+                numbers[i] = number;
+                i++;
+            } while (number > 0 && i < 10);
+
+            int sum = 0;
+            int k = 0;
+            double avarage;
+
+            for (int j = 0; j < i; j++)
+            {
+                if (numbers[j] % 3 == 0)
+                {
+                    sum += numbers[j];
+                    k++;
+                }
+            }
+
+            if (k == 0)
+                k = 1;
+
+            avarage = (double)sum / k;
+            Console.Write("Avarage value numbers that divisible by 3: ");
+            Console.WriteLine(avarage);
+        }
+        static void Fibonachi()
+        {
+            //HomeTask 1
+            Console.WriteLine("Enter the number of Fibonacci numbers");
+            int lenght = int.Parse(Console.ReadLine());
+            int[] fibonachi = new int[lenght];
+            if (lenght < 2)
+            {
+                Console.WriteLine("You wrote too low number");
+            }
+            else
+            {
+                fibonachi[0] = 1;
+                fibonachi[1] = 1;
+                for (int i = 2; i < lenght; i++)
+                {
+                    fibonachi[i] = fibonachi[i - 1] + fibonachi[i - 2];
+                }
+
+                Console.Write($"{lenght} fibonachi's numbers: ");
+                for (int i = 0; i < fibonachi.Length; i++)
+                {
+                    Console.Write(fibonachi[i] + " ");
+                }
+            }
+        }
         static void Debaging()
         {
             Console.WriteLine("Enter 3 sides of triangle.");
