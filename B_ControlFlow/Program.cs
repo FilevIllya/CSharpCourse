@@ -6,9 +6,84 @@ namespace B_ControlFlow
     {
         static void Main(string[] args)
         {
-
+            
         }
 
+        static void Password()
+        {
+            //HomeTask 4
+            string needLoginPassword = "johnsilver\\qwerty";
+            bool correctLP = false;
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"Enter login and parol. Example: \"login\\parol\". Last {3 - i} tries.");
+                string yourLoginPassword = Console.ReadLine();
+                correctLP = string.Equals(needLoginPassword, yourLoginPassword, StringComparison.Ordinal);
+                if (correctLP == true)
+                {
+                    break;
+                }
+            }
+
+            if (correctLP == true)
+            {
+                Console.WriteLine("Enter the System");
+            }
+            else
+            {
+                Console.WriteLine("The number of available tries have been exceeded");
+            }
+
+        }
+        static void Factorial()
+        {
+            //HomeTask 3
+            Console.WriteLine("Enter number for the factorial");
+            int number = int.Parse(Console.ReadLine());
+            int factorial = 1;
+            if (number == 0 || number == 1)
+            {
+                Console.WriteLine("Factorial = 1");
+            }
+            else
+            {
+                int j = 0;
+                for (int i = number; i > 0; i--)
+                {
+                    factorial *= number - j;
+                    j++;
+                }
+            }
+            Console.WriteLine($"Factorial of {number} = {factorial}");
+        }
+        static void Fibonachi2()
+        {
+            //HomeTask 1.2
+            Console.Write("Enter the count of Fibonacci numbers: ");
+            int arrayLenght = int.Parse(Console.ReadLine());
+            int[] fibonachi = new int[arrayLenght];
+            Console.Write($"{arrayLenght} Fibonacci numbers: ");
+            if (arrayLenght <= 2)
+            {
+                for (int i = 0; i < arrayLenght; i++)
+                {
+                    Console.Write(1 + " ");
+                }
+            }
+            else
+            {
+                fibonachi[0] = 1;
+                fibonachi[1] = 1;
+                for (int i = 2; i < arrayLenght; i++)
+                {
+                    fibonachi[i] = fibonachi[i - 1] + fibonachi[i - 2];
+                }
+                for (int i = 0; i < fibonachi.Length; i++)
+                {
+                    Console.Write(fibonachi[i] + " ");
+                }
+            }
+        }
         static void AvarageBy3()
         {
             //HomeTask 2
