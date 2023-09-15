@@ -8,9 +8,188 @@ namespace C_ArraysCollections
     {
         static void Main(string[] args)
         {
-
+            
         }
 
+        static void IndexFrom1()
+        {
+            //its VERY BAD do like this
+            Array myArray = Array.CreateInstance(typeof(int), new[] { 4 }, new[] { 1 }); //4 - lenght, 1 - first index
+            myArray.SetValue(2019, 1);
+            myArray.SetValue(2019, 2);
+            myArray.SetValue(2019, 3);
+            myArray.SetValue(2019, 4); //its good becouse 1 first index
+
+            Console.WriteLine($"Starting index: {myArray.GetLowerBound(0)}");
+            Console.WriteLine($"Endig index: {myArray.GetUpperBound(0)}");
+
+            for (int i = myArray.GetLowerBound(0); i <= myArray.GetUpperBound(0); i++)
+            {
+                Console.WriteLine($"{myArray.GetValue(i)} at index {i}");
+            }
+            //its like
+            //for (int i = 1; i < 5; i++)
+            //{
+            //  Console.WriteLine($"{myArray.GetValue(i)} at index {i}");
+            //}
+        }
+        static void JaggedArray()
+        {
+            int[][] jaggedArray = new int[4][];
+            jaggedArray[0] = new int[1];
+            jaggedArray[1] = new int[3];
+            jaggedArray[2] = new int[2];
+            jaggedArray[3] = new int[4];
+
+            Console.WriteLine("Enter the number for a jagged array.");
+
+            for (int i = 0; i < jaggedArray.Length; i++) //count of rows
+            {
+                for (int j = 0; j < jaggedArray[i].Length; j++)
+                {
+                    string st = Console.ReadLine();
+                    jaggedArray[i][j] = int.Parse(st);
+
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Printing the Elements");
+
+            for (int i = 0; i < jaggedArray.Length; i++) //print out
+            {
+                for (int j = 0; j < jaggedArray[i].Length; j++)
+                {
+                    Console.Write(jaggedArray[i][j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        static void MultidimArray()
+        {
+            int[,] r1 = new int[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } }; //rows, coloumn
+            for (int i = 0; i < r1.GetLength(0); i++)
+            {
+                for (int j = 0; j < r1.GetLength(1); j++)
+                {
+                    Console.Write($"{r1[i, j]} ");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+        static void StackQueue()
+        {
+            //queue
+            var queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+
+            Console.WriteLine($"Should print out 1: {queue.Peek()}");
+
+            queue.Dequeue(); //return deleted value
+
+            Console.WriteLine($"Should print out 2: {queue.Peek()}");
+
+            Console.WriteLine("Iterate over the queue.");
+            foreach (var cur in queue)
+            {
+                Console.WriteLine(cur);
+            }
+
+            Console.ReadLine();
+            //stack
+            var stack = new Stack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+            stack.Push(4);
+
+            Console.WriteLine($"Should print out 4: {stack.Peek()}");
+
+            stack.Pop(); //return deleted value
+
+            Console.WriteLine($"Should print out 3: {stack.Peek()}");
+
+            Console.WriteLine("Iterate over the stack.");
+            foreach (var cur in stack)
+            {
+                Console.WriteLine(cur);
+            }
+        }
+        static void DictionaryDemo()
+        {
+            var people = new Dictionary<int, string>();
+            people.Add(1, "John");
+            people.Add(2, "Bob");
+            people.Add(3, "Alice");
+            //same like
+            people = new Dictionary<int, string>()
+            {
+                {1,"John" },
+                {2,"Bob" },
+                {3,"Alice" },
+            };
+            //same values doesnt add
+
+            //finding by key n
+            string name = people[1];
+            Console.WriteLine(name);
+
+            Console.WriteLine("Iterating over keys");
+            Dictionary<int, string>.KeyCollection keys = people.Keys; //type. "var" better 
+
+            foreach (var item in keys)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("Iterating over values");
+            Dictionary<int, string>.ValueCollection values = people.Values;
+
+            foreach (var item in values)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("Iterating over key-value pairs");
+            foreach (var pair in people)
+            {
+                Console.WriteLine($"Key: {pair.Key}. Value: {pair.Value}");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine($"Count = {people.Count}"); //count of pairs
+
+            bool containsKey = people.ContainsKey(2);//finding VERY fast
+            bool containsValue = people.ContainsValue("John"); //finding slow like in array
+
+            Console.WriteLine($"Contains key: {containsKey}. Contains value: {containsValue}");
+
+            people.Remove(1); //delete by key. return true/false
+
+            if (people.TryAdd(2, "Bin"))
+            {
+                Console.WriteLine("Added successfully");
+            }
+            else
+            {
+                Console.WriteLine("Failed to add");
+            }
+
+            if (people.TryGetValue(2, out string val))
+            {
+                Console.WriteLine($"Key 2, Val={val}");
+            }
+            else
+            {
+                Console.WriteLine("Failed to get");
+            }
+
+            people.Clear();
+        }
         static void ListDemo()
         {
             //Add
