@@ -8,9 +8,75 @@ namespace C_ArraysCollections
     {
         static void Main(string[] args)
         {
-            
+            Console.Write("Input the number of elements to store in the array: ");
+            int arrayLenght = int.Parse(Console.ReadLine());
+            int[] mainArray = new int[arrayLenght];
+
+            Console.WriteLine($"Input {arrayLenght} number of elements in the array:");
+            for (int i = 0; i < arrayLenght; i++)
+            {
+                Console.Write($"element - {i}: ");
+                mainArray[i] = int.Parse(Console.ReadLine());
+            }
+
+            int arrayNumber = 0;
+            int counter = 0;
+            int[] checkArray = new int[arrayLenght];
+
+            for (int i = 0; i < arrayLenght; i++)
+            {
+                arrayNumber = mainArray[i];
+                counter = 0;
+                for (int j = 0; j < arrayLenght; j++)
+                {
+                    if (mainArray[j] == arrayNumber)
+                    {
+                        counter++;
+                    }
+                }
+                checkArray[i] = counter;
+            }
+
+            Console.WriteLine("Frequency of all elements of array: ");
+            for (int i = 0; i < arrayLenght; i++)
+            {
+                Console.WriteLine($"{mainArray[i]} occurs {checkArray[i]} times");
+            }
         }
 
+        static void ReverseArray()
+        {
+            Console.Write("Input the number of elements to store in the array: ");
+            int arrayLenght = int.Parse(Console.ReadLine());
+            int[] reverseArray = new int[arrayLenght];
+
+            Console.WriteLine($"Input {arrayLenght} number of elements in the array:");
+            for (int i = 0; i < arrayLenght; i++)
+            {
+                Console.Write($"element - {i}: ");
+                reverseArray[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("The values store into the array are: ");
+            foreach (var item in reverseArray)
+            {
+                Console.Write(item + "  ");
+            }
+
+            Console.WriteLine("The values store into the array in reverse are: ");
+            int box = 0;
+            for (int i = 0; i < arrayLenght / 2; i++)
+            {
+                box = reverseArray[i];
+                reverseArray[i] = reverseArray[reverseArray.Length - i - 1];
+                reverseArray[reverseArray.Length - i - 1] = box;
+            }
+
+            foreach (var item in reverseArray)
+            {
+                Console.Write(item + "  ");
+            }
+        }
         static void IndexFrom1()
         {
             //its VERY BAD do like this
