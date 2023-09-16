@@ -37,12 +37,37 @@ namespace C_ArraysCollections
                 checkArray[i] = counter;
             }
 
+            string[] stringArray = new string[arrayLenght];
+            string str = string.Empty;
+            counter = 0;
+            bool isStr = false;
+
             Console.WriteLine("Frequency of all elements of array: ");
             for (int i = 0; i < arrayLenght; i++)
             {
-                Console.WriteLine($"{mainArray[i]} occurs {checkArray[i]} times");
+                str = $"{mainArray[i]} occurs {checkArray[i]} times";
+                for (int j = 0; j < arrayLenght; j++)
+                {
+                    if (stringArray[j] == str)
+                    {
+                        isStr = true;
+                    }
+                }
+                if (isStr == false)
+                {
+                    stringArray[counter] = str;
+                    counter++;
+                }
+                isStr = false;
+            }
+
+            foreach (var item in stringArray)
+            {
+                Console.WriteLine(item);
             }
         }
+
+        
 
         static void ReverseArray()
         {
