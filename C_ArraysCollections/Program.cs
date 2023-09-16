@@ -8,6 +8,13 @@ namespace C_ArraysCollections
     {
         static void Main(string[] args)
         {
+           
+        }
+
+        
+        static void CountTheNumberInArray()
+        {
+            //HomeTask 2
             Console.Write("Input the number of elements to store in the array: ");
             int arrayLenght = int.Parse(Console.ReadLine());
             int[] mainArray = new int[arrayLenght];
@@ -66,11 +73,9 @@ namespace C_ArraysCollections
                 Console.WriteLine(item);
             }
         }
-
-        
-
         static void ReverseArray()
         {
+            //HomeTask 1
             Console.Write("Input the number of elements to store in the array: ");
             int arrayLenght = int.Parse(Console.ReadLine());
             int[] reverseArray = new int[arrayLenght];
