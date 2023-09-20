@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using D_OOP;
 
 namespace CSharpCourse
 {
-    class Program
+    class Program 
     {
         static void Main(string[] args)
         {
+            Character c = new Character();
+            c.Hit(10); //side effect
 
+            Console.WriteLine(c.Health);
         }
 
         static void HomeTask3()
