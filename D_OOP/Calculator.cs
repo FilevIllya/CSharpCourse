@@ -17,5 +17,10 @@ namespace D_OOP
         {
             return 0.5 * b * h;
         }
+
+        public double GetTriangleSquare(double side1, double side2, int alpha)
+        {
+            return 0.5 * side1 * side2 * Math.Sin(alpha);
+        }
     }
 }
