@@ -8,6 +8,7 @@ namespace D_OOP
     {
         //without any text members will be private
         //property
+        private static int speed = 10;
         public int Health { get; private set; } = 100;
 
         //its like:
@@ -28,6 +29,16 @@ namespace D_OOP
             }
             //health -= damage;
             Health -= damage;
+        }
+
+        public int PrintSpeed()
+        {
+           return speed;
+        }
+
+        public void IncreaseSpeed()
+        {
+            speed += 10;
         }
     }
 }
