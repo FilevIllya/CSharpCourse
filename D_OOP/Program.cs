@@ -7,8 +7,22 @@ namespace D_OOP
     {
         static void Main(string[] args)
         {
-            Character c = new Character("Elf");
-            Console.WriteLine(c.Race);
+            Shape[] shapes = new Shape[2];
+            shapes[0] = new Triangle(10, 20, 40);
+            shapes[1] = new Rectangle(5, 10);
+
+            foreach (Shape shape in shapes)
+            {
+                shape.Draw();
+                Console.WriteLine(shape.Perimetr());
+            }
+
+            Console.ReadLine(); 
+            //
+            ModelXTerminal terminal = new ModelXTerminal("123");
+            terminal.Connect();
+
+            Console.ReadLine();
         }
         ////////
         static void BoxingUnboxing()
@@ -106,7 +120,7 @@ namespace D_OOP
         static void RefAndValTypes()
         {
             EvilStruct es1 = new EvilStruct();
-            es1.PointRef = new PointRef() { X = 1, Y = 2 };
+            //es1.PointRef = new PointRef() { X = 1, Y = 2 };
             //Or
             //es1.PointRef.X = 1;
             //es1.PointRef.Y = 2;

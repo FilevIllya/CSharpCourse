@@ -19,7 +19,7 @@ namespace D_OOP
     {
         //without any text members will be private
         //property
-        private static int speed = 10;
+        private readonly int speed; //read only its like const but there's no need assigned right now
         public int Health { get; private set; } = 100;
         //its like:
         //public int GetHealth() 
@@ -49,6 +49,13 @@ namespace D_OOP
             //Armor = 30;
         }
 
+        public Character(string race, int armor, int speed) //our second constructor
+        {
+            Race = race;
+            Armor = armor;
+            this.speed = speed;
+        }
+
         public void Hit(int damage)
         {
             if (damage> Health)
@@ -66,7 +73,7 @@ namespace D_OOP
 
         public void IncreaseSpeed()
         {
-            speed += 10;
+            //speed += 10;
         }
     }
 }
