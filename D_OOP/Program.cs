@@ -7,6 +7,11 @@ namespace D_OOP
     {
         static void Main(string[] args)
         {
+            
+        }
+
+        static void shapes()
+        {
             Shape[] shapes = new Shape[2];
             shapes[0] = new Triangle(10, 20, 40);
             shapes[1] = new Rectangle(5, 10);
@@ -17,7 +22,7 @@ namespace D_OOP
                 Console.WriteLine(shape.Perimetr());
             }
 
-            Console.ReadLine(); 
+            Console.ReadLine();
             //
             ModelXTerminal terminal = new ModelXTerminal("123");
             terminal.Connect();
