@@ -7,9 +7,30 @@ namespace D_OOP
     {
         static void Main(string[] args)
         {
-            
         }
 
+
+        static void ProblemOfRepresentatives()
+        {
+            IShape rect = new Rect() { Hight = 2, Width = 5 };
+            IShape square = new Square() { SideLenght = 10 };
+
+            Console.WriteLine($"Rect area = {rect.CalcSquare()}. Square area = {square.CalcSquare()}");
+            //Rect rect = new Rect { Hight = 2, Width = 5 };
+            //int rectArea = AreaCalculator.CalcSquare(rect);
+            //Console.WriteLine($"Rect Area = {rectArea}");
+
+            //Rect square = new Squere { Hight = 2, Width = 10 };
+            //AreaCalculator.CalcSquare(square);
+
+        }
+        static void interfaces()
+        {
+            List<object> list = new List<object>() { 1, 2, 3, 4 };
+            IBaseCollection collection = new BaseList(4);
+            collection.AddRange(list);
+            collection.Add(1);
+        }
         static void shapes()
         {
             Shape[] shapes = new Shape[2];

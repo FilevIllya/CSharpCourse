@@ -8,6 +8,19 @@ namespace D_OOP
     {
         void Add(object obj);
         void Remove(object obj);
+
+         
+    }
+
+    public static class BaseCollectionExtension
+    {
+        public static void AddRange(this IBaseCollection collection, IEnumerable<object> objects)
+        {
+            foreach(var item in objects)
+            {
+                collection.Add(item);
+            }
+        }
     }
 
     //its like:
