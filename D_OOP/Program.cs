@@ -7,6 +7,10 @@ namespace D_OOP
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Write number");
+            string value = Console.ReadLine();
+            SSN ssn = new SSN() { Number = value};
+            Console.WriteLine(ssn.ToSSNFormat()); ;
         }
 
 
