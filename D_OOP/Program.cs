@@ -7,13 +7,47 @@ namespace D_OOP
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Write number");
-            string value = Console.ReadLine();
-            SSN ssn = new SSN() { Number = value};
-            Console.WriteLine(ssn.ToSSNFormat()); ;
+            MyStack ms = new MyStack();
+            ms.Push(1);
+            ms.Push(2);
+            //
+            ms.Push("Hello world");
+            ms.Push(true);
+            ms.Push('a');
+            ms.Push(0.3);
+            ms.Push(new Character(Race.Elf));
+            //its not normal but imposible because
+
+            while (ms.Count != 0)
+            {
+                Console.WriteLine((int)ms.Peek()); //there will crush
+                ms.Pop();
+            }
+
+            ms.Push(3);
+
+
+            Console.WriteLine(ms.Peek()); 
+            ms.Pop();
+
+            Console.WriteLine(ms.Peek());
+            ms.Push(3);
+            ms.Push(4);
+            ms.Push(5);
+
+            Console.WriteLine(ms.Peek());
+
+            Console.ReadLine();
         }
 
-
+        static void SSN()
+        {
+            Console.WriteLine("Write number");
+            string value = Console.ReadLine();
+            SSN ssn = new SSN() { Number = value };
+            Console.WriteLine(ssn.ToSSNFormat()); ;
+        }
+        ////
         static void ProblemOfRepresentatives()
         {
             IShape rect = new Rect() { Hight = 2, Width = 5 };
