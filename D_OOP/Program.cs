@@ -7,16 +7,28 @@ namespace D_OOP
     {
         static void Main(string[] args)
         {
-            MyStack ms = new MyStack();
+            //System.Collections.IEnumerable enumer = (System.Collections.IEnumerable)ms; //casting
+            //enumer.GetEnumerator
+
+            MyStack<int> ms = new MyStack<int>();
+    
             ms.Push(1);
             ms.Push(2);
-            //
-            ms.Push("Hello world");
-            ms.Push(true);
-            ms.Push('a');
-            ms.Push(0.3);
-            ms.Push(new Character(Race.Elf));
-            //its not normal but imposible because
+            ms.Push(3);
+
+            var enumerator = ms.GetEnumerator();
+
+            //while (enumerator.MoveNext()) //like foreach in this situation
+            //{
+            //    Console.WriteLine(enumerator.Current);
+            //}
+
+            foreach (var item in ms)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.ReadLine();
 
             while (ms.Count != 0)
             {
