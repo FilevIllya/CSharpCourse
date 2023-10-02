@@ -62,9 +62,17 @@ namespace D_OOP
             return _items[Count - 1];
         }
 
+        //public IEnumerator<T> GetEnumerator()
+        //{
+        //    return new StackEnumerator<T>(_items, Count );
+        //}
+
         public IEnumerator<T> GetEnumerator()
         {
-            return new StackEnumerator<T>(_items, Count );
+            for (int i = Count - 1; i >= 0; i--)
+            {
+                yield return _items[i]; //enough  for implementation. This word generate class 
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator() //this method will hiden from the user

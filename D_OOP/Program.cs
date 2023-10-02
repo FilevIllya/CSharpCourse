@@ -7,11 +7,16 @@ namespace D_OOP
     {
         static void Main(string[] args)
         {
+
+        }
+
+        static void MyStackTest()
+        {
             //System.Collections.IEnumerable enumer = (System.Collections.IEnumerable)ms; //casting
             //enumer.GetEnumerator
 
             MyStack<int> ms = new MyStack<int>();
-    
+
             ms.Push(1);
             ms.Push(2);
             ms.Push(3);
@@ -39,7 +44,7 @@ namespace D_OOP
             ms.Push(3);
 
 
-            Console.WriteLine(ms.Peek()); 
+            Console.WriteLine(ms.Peek());
             ms.Pop();
 
             Console.WriteLine(ms.Peek());
@@ -51,7 +56,6 @@ namespace D_OOP
 
             Console.ReadLine();
         }
-
         static void SSN()
         {
             Console.WriteLine("Write number");
