@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B_ControlFlow", "B_ControlF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C_ArraysCollections", "C_ArraysCollections\C_ArraysCollections.csproj", "{AB08B7D5-F66C-435C-A104-C36E9F4A1F52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D_OOP", "D_OOP\D_OOP.csproj", "{E04059BD-66BA-4821-80DE-5EE26623D4F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D_OOP", "D_OOP\D_OOP.csproj", "{E04059BD-66BA-4821-80DE-5EE26623D4F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_Exceptions", "E_Exceptions\E_Exceptions.csproj", "{EF4F805F-F455-4B15-835F-C6605BC9BF00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E04059BD-66BA-4821-80DE-5EE26623D4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E04059BD-66BA-4821-80DE-5EE26623D4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E04059BD-66BA-4821-80DE-5EE26623D4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF4F805F-F455-4B15-835F-C6605BC9BF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4F805F-F455-4B15-835F-C6605BC9BF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4F805F-F455-4B15-835F-C6605BC9BF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4F805F-F455-4B15-835F-C6605BC9BF00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
