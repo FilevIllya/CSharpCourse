@@ -1,15 +1,31 @@
 ﻿using System;
+using System.Timers;
 
 namespace G_Delegation
 {
+    public class CarArgs : EventArgs
+    {
+        public CarArgs(int currentspeed)
+        {
+            CurrentSpeed = currentspeed;
+        }
+
+        public int CurrentSpeed { get;  }
+    }
+
     public class Car
     {
         int speed = 0;
-        public delegate void TooFast(int currentSpeed);
+
+        public event EventHandler<CarArgs> TooFastDriving; //like Action<object, int>
+
+        //public event Func<int, string> TooFastDrivingM; //like method
+
+        //public delegate void TooFast(int currentSpeed); //no need for event Action
 
         //The delegate describes a signature
         //and this signature must be followed by the handler
-        private TooFast tooFast;
+        //private TooFast tooFast;
 
         public void Start()
         {
@@ -22,7 +38,10 @@ namespace G_Delegation
 
             if (speed > 80)
             {
-                tooFast(speed); //handler "HandleOnTooFast"
+                if (TooFastDriving != null)
+                {
+                    TooFastDriving(this, new CarArgs(speed)); //handler "HandleOnTooFast"
+                }
             }
         }
 
@@ -31,18 +50,38 @@ namespace G_Delegation
             speed = 0;
         }
 
-        public void RegisterOnTooFast(TooFast tooFast) //Linc on method
-        {
-            this.tooFast = tooFast;
-        }
+        //public void RegisterOnTooFast(TooFast tooFast) //Linc on method
+        //{
+        //    this.tooFast += tooFast; //add one more link to delegate
+        //}
+
+        //public void UnregisterOnTooFast(TooFast tooFast)
+        //{
+        //    this.tooFast -= tooFast; //delete metod from delegate
+        //}
     }
     class Program
     {
-        static Car car;
         static void Main(string[] args)
         {
-            car = new Car();
-            car.RegisterOnTooFast(HandleOnTooFast);
+            Timer timer = new Timer();
+            timer.Elapsed += Timer_Elapsed; //subscribe 
+
+            timer.Interval = 5000;
+            timer.Start();
+
+            Console.ReadLine();
+
+            Car car = new Car();
+            //delegate
+            //car.RegisterOnTooFast(HandleOnTooFast);
+            //car.RegisterOnTooFast(HandleOnTooFast); //its not method it's subscribe. 2 subscribe = 2 methods in Accelerate
+            //car.UnregisterOnTooFast(HandleOnTooFast);
+
+            car.TooFastDriving += HandleOnTooFast; //event
+            //car.TooFastDriving += HandleOnTooFast;
+
+            //car.TooFastDriving -= HandleOnTooFast;
 
             car.Start();
 
@@ -50,12 +89,19 @@ namespace G_Delegation
             {
                 car.Accelerate();
             }
-            
+
+            Console.ReadLine();
         }
 
-        private static void HandleOnTooFast(int speed) //need same signature with delegate
+        private static void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Console.WriteLine($"Oh, I got it, calling Stop! Current speed = {speed}");
+            Console.WriteLine("Handling Timer Elapsed Event");
+        }
+
+        private static void HandleOnTooFast(object obj, CarArgs speed) //need same signature with delegate
+        {
+            Console.WriteLine($"Oh, I got it, calling Stop! Current speed = {speed.CurrentSpeed}");
+            var car = (Car)obj;
             car.Stop();
         }
     }
