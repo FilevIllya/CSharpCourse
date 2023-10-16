@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Timers;
 
 namespace G_Delegation
@@ -60,9 +63,85 @@ namespace G_Delegation
         //    this.tooFast -= tooFast; //delete metod from delegate
         //}
     }
+
+    public static class LinqExtensions
+    {
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            if (source == null)
+                throw new ArgumentException();
+
+            foreach (var item in source)
+            {
+                action(item);
+            }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
+        {
+            DisplayLargestFilesWithLinq(@"C:\Users\Acer\Desktop\поточна сборка");
+            //DisplayLargestFilesWithoutLinq(@"C:\Users\Acer\Desktop\поточна сборка");
+            Console.ReadLine(); 
+        }
+
+        private static void DisplayLargestFilesWithLinq(string pathToDir)
+        {
+            new DirectoryInfo(pathToDir)
+                .GetFiles()
+                .OrderByDescending(file => file.Length) //or {return file.length} for more than 1 line code
+                .Take(5)
+                .ForEach(file => Console.WriteLine($"{file.Name} weights {file.Length}"));
+
+            //or
+
+            //IEnumerable<FileInfo> orderedFiles = new DirectoryInfo(pathToDir)
+            //    .GetFiles()
+            //    .OrderBy(file => file.Length) //or {return file.length} for more than 1 line code
+            //    .Take(5);
+
+            //foreach (var file in orderedFiles)
+            //{
+            //    Console.WriteLine($"{file.Name} weights {file.Length}");
+            //}
+        }
+
+        //static long KeySelector(FileInfo file)
+        //{
+        //    return file.Length;
+        //}
+
+        //Solution without LINQ
+        private static void DisplayLargestFilesWithoutLinq(string pathToDir)
+        {
+            var dirInfo = new DirectoryInfo(pathToDir);
+            FileInfo[] files = dirInfo.GetFiles();
+
+            Array.Sort(files, FilesComparison);
+
+            for (int i = 0; i < 5; i++)
+            {
+                FileInfo file = files[i];
+                Console.WriteLine($"{file.Name} weights {file.Length}");
+            }
+        }
+
+        static int FilesComparison(FileInfo x, FileInfo y)  //sort Delegate
+        {
+            if (x.Length == y.Length)
+            {
+                return 0;
+            }
+
+            if (x.Length > y.Length)
+            { 
+                return -1; 
+            }
+            return 1;
+        }
+
+        private static void EventsDemo()
         {
             Timer timer = new Timer();
             timer.Elapsed += Timer_Elapsed; //subscribe 
