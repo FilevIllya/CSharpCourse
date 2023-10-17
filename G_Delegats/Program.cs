@@ -81,11 +81,32 @@ namespace G_Delegation
     {
         static void Main(string[] args)
         {
-            DisplayLargestFilesWithLinq(@"C:\Users\Acer\Desktop\поточна сборка");
+            MinMaxSumAvarage("TopPlayers.csv");
+
+
+            //DisplayLargestFilesWithLinq(@"C:\Users\Acer\Desktop\поточна сборка");
             //DisplayLargestFilesWithoutLinq(@"C:\Users\Acer\Desktop\поточна сборка");
             Console.ReadLine(); 
         }
+        //LINQ
 
+        static void MinMaxSumAvarage(string file)
+        {
+            List<ChessPlayer> list = File.ReadAllLines(file)
+                                         .Skip(1)
+                                         .Select(x => ChessPlayer.ParseFideCsv(x))
+                                         .Where(player => player.BirthYear > 1988)
+                                         .OrderByDescending(player => player.Rating)
+                                         .ThenBy(player => player.Country)
+                                         .Take(10)
+                                         .ToList();
+
+            Console.WriteLine($"The lowest rating in TOP 10: {list.Min(x=>x.Rating)}");
+            Console.WriteLine($"The highest rating in TOP 10: {list.Max(x => x.Rating)}");
+            Console.WriteLine($"The avarage rating in TOP 10: {list.Average(x => x.Rating)}");
+        }
+
+        //
         private static void DisplayLargestFilesWithLinq(string pathToDir)
         {
             new DirectoryInfo(pathToDir)
