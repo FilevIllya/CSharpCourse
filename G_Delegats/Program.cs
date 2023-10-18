@@ -81,7 +81,7 @@ namespace G_Delegation
     {
         static void Main(string[] args)
         {
-            MinMaxSumAvarage("TopPlayers.csv");
+            LinqDemo("TopPlayers.csv");
 
 
             //DisplayLargestFilesWithLinq(@"C:\Users\Acer\Desktop\поточна сборка");
@@ -104,6 +104,43 @@ namespace G_Delegation
             Console.WriteLine($"The lowest rating in TOP 10: {list.Min(x=>x.Rating)}");
             Console.WriteLine($"The highest rating in TOP 10: {list.Max(x => x.Rating)}");
             Console.WriteLine($"The avarage rating in TOP 10: {list.Average(x => x.Rating)}");
+        }
+
+        static void LinqDemo(string file)
+        {
+            List<ChessPlayer> list = File.ReadAllLines(file)
+                                         .Skip(1)
+                                         .Select(x => ChessPlayer.ParseFideCsv(x))
+                                         .Where(player => player.BirthYear > 1988)
+                                         .OrderByDescending(player => player.Rating)
+                                         .ThenBy(player => player.Country)
+                                         .Take(10)
+                                         .ToList();
+
+            Console.WriteLine($"The lowest rating in TOP 10: {list.Min(x => x.Rating)}");
+            Console.WriteLine($"The highest rating in TOP 10: {list.Max(x => x.Rating)}");
+            Console.WriteLine($"The avarage rating in TOP 10: {list.Average(x => x.Rating)}");
+
+            Console.WriteLine(list.First());
+            Console.WriteLine(list.Last());
+
+            Console.WriteLine(list.First(player => player.Country == "USA")); //element or Exception
+            Console.WriteLine(list.Last(player => player.Country == "USA"));
+
+            var firstFromBra = list.FirstOrDefault(player => player.Country == "BRA"); //without Exception.
+            if (firstFromBra != null)
+            {
+                Console.WriteLine(firstFromBra.LastName);
+            }
+            var lastFromBra = list.LastOrDefault(player => player.Country == "BRA");
+            if (lastFromBra != null)
+            {
+                Console.WriteLine(firstFromBra.LastName);
+            }
+
+            Console.WriteLine(list.Single(player=>player.Country == "FRA")); //ONLY ONE ELEMENT. If 2 or more will be exception
+            Console.WriteLine(list.SingleOrDefault(player => player.Country == "FRA"));
+            //Console.WriteLine(list.SingleOrDefault(player => player.Country == "USA"));
         }
 
         //
