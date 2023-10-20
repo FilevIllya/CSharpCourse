@@ -81,12 +81,79 @@ namespace G_Delegation
     {
         static void Main(string[] args)
         {
-            LinqDemo("TopPlayers.csv");
-
-
+            AllUsaShessPlayers(@"C:\Users\Acer\Desktop\Обуч C#\LearnC#\CSharpCourseSolution\G_Delegats\TopPlayers.csv");
             //DisplayLargestFilesWithLinq(@"C:\Users\Acer\Desktop\поточна сборка");
             //DisplayLargestFilesWithoutLinq(@"C:\Users\Acer\Desktop\поточна сборка");
             Console.ReadLine(); 
+        }
+
+        //LINQ practice
+        static void AllUsaShessPlayers(string file)
+        {
+            List<ChessPlayer> list = File.ReadAllLines(file)
+                .Skip(1)
+                .Select(x => ChessPlayer.ParseFideCsv(x))
+                .Where(player => player.Country == "USA")
+                .OrderBy(player => player.BirthYear)
+                .ToList();
+
+            foreach (var player in list)
+            {
+                Console.WriteLine(player);
+            }
+        }
+
+        //foreach delete
+        static void RemoveInForeach()
+        {
+            var list = new List<int> { 0, 1, 2, 3, 4, 5 };
+
+            foreach (var item in list)
+            {
+                if (item % 2 == 0)
+                {
+                    list.Remove(item);
+                }
+            }
+            Console.WriteLine(list.Count);
+        }
+        static void RemoveInFor()
+        {
+            var list = new List<int> { 0, 1, 2, 3, 4, 5 };
+            for (int i = 0; i < list.Count; i++)
+            {
+                var item = list[i];
+                if (item <= 3)
+                {
+                    list.Remove(item);
+                    i--;
+                }
+            }
+            Console.WriteLine(list.Count);
+        }
+        static void RemoveInForBackwards()
+        {
+            var list = new List<int> { 0, 1, 2, 3, 4, 5 };
+            for (int i = list.Count-1; i >= 0; i--)
+            {
+                var item = list[i];
+                if (item <= 3)
+                {
+                    list.Remove(item);
+                }
+            }
+            Console.WriteLine(list.Count);
+        }
+
+        static void RemoveAllDemo()
+        {
+            var list = new List<int> { 0, 1, 2, 3, 4, 5 };
+            list.RemoveAll(x=> x <=3);
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
         //LINQ
 
@@ -112,10 +179,31 @@ namespace G_Delegation
                                          .Skip(1)
                                          .Select(x => ChessPlayer.ParseFideCsv(x))
                                          .Where(player => player.BirthYear > 1988)
+                                         //.Where(delegate(ChessPlayer player) {return player.BirthYear > 1988;}) //old-style anonimus method syntax
                                          .OrderByDescending(player => player.Rating)
                                          .ThenBy(player => player.Country)
                                          .Take(10)
-                                         .ToList();
+                                         .ToList(); //need greedy operator for faster code
+
+            //SQL-Like Syntax
+            //IEnumerable<ChessPlayer> list2 = File.ReadAllLines(file)
+            //                             .Skip(1)
+            //                             .Select(x => ChessPlayer.ParseFideCsv(x));
+
+            //var filtered = from player in list2
+            //               where player.BirthYear > 1988
+            //               orderby player.Rating descending
+            //               select player;
+
+            foreach (var player in list)
+            {
+                Console.WriteLine(player);
+            }
+
+            foreach (var player in list)
+            {
+                Console.WriteLine(player);
+            }
 
             Console.WriteLine($"The lowest rating in TOP 10: {list.Min(x => x.Rating)}");
             Console.WriteLine($"The highest rating in TOP 10: {list.Max(x => x.Rating)}");
@@ -141,6 +229,12 @@ namespace G_Delegation
             Console.WriteLine(list.Single(player=>player.Country == "FRA")); //ONLY ONE ELEMENT. If 2 or more will be exception
             Console.WriteLine(list.SingleOrDefault(player => player.Country == "FRA"));
             //Console.WriteLine(list.SingleOrDefault(player => player.Country == "USA"));
+
+            //In main
+            //var list = new List<int> { 1, 2, 3 };
+            //var query = list.Where(c => c >= 2).ToList(); //ToList make "where" right now
+            //list.Remove(3);
+            //Console.WriteLine(query.Count()); //"where" will be here
         }
 
         //
