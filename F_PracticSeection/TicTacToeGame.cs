@@ -6,8 +6,8 @@ namespace F_PracticSeection
 {
     class TicTacToeGame
     {
-        char[] cells = new char[9] { '_', '_', '_', '_', '_', '_', ' ', ' ', ' ' };
-        public void TicTacToe()
+        static char[] cells = new char[9] { '_', '_', '_', '_', '_', '_', ' ', ' ', ' ' };
+        public static void TicTacToe()
         {
             Console.WriteLine("Welcome to \"Tic Tac Toe\". Input number from 1 to 9 to make a move to the corresponding cell.");
             GridBuilder();
@@ -56,14 +56,14 @@ namespace F_PracticSeection
 
         }
 
-        private void GridBuilder()
+        private static void GridBuilder()
         {
             Console.WriteLine($"{cells[0]}|{cells[1]}|{cells[2]}");
             Console.WriteLine($"{cells[3]}|{cells[4]}|{cells[5]}");
             Console.WriteLine($"{cells[6]}|{cells[7]}|{cells[8]}");
         }
 
-        private bool BingoCheck()
+        private static bool BingoCheck()
         {
             if ((cells[0] == cells[1] && cells[1] == cells[2]) && (cells[0] != ' ' && cells[0] != '_'))
             {

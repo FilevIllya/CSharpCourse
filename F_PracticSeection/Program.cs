@@ -6,6 +6,12 @@ namespace F_PracticSeection
     {
         static void Main(string[] args)
         {
+            Sticks sticks = new Sticks();
+            sticks.BeginGameSingleplayer();
+        }
+
+        static public void GuessTheWord()
+        {
             Guess_the_word game = new Guess_the_word();
             game.BeginGame();
             Console.ReadLine();
@@ -14,8 +20,7 @@ namespace F_PracticSeection
         ///////////////////////////////////////////////////////////////////////////////////////
         static public void TicTacToiDemo()
         {
-            TicTacToeGame game = new TicTacToeGame();
-            game.TicTacToe();
+            TicTacToeGame.TicTacToe();
             //GuessTheNumber();
         }
 
