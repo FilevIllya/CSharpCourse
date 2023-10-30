@@ -6,8 +6,8 @@ namespace F_PracticSeection
     {
         static void Main(string[] args)
         {
-            Sticks sticks = new Sticks();
-            sticks.BeginGameSingleplayer();
+            TrueOrNotGame ToN = new TrueOrNotGame(@"C:\Users\Acer\Desktop\Обуч C#\LearnC#\CSharpCourseSolution\F_PracticSeection\Question.csv");
+            ToN.BeginGame();
         }
 
         static public void GuessTheWord()
